@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using UniTransport.DAL.Database;
+
 namespace UniTransport.PLL
 {
     public class Program
@@ -8,6 +11,11 @@ namespace UniTransport.PLL
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Database Context
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
             var app = builder.Build();
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UniTransport.PLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e8177fef7a50bb6ce2a8256dbe205eb4ca510a4")]
 [assembly: System.Reflection.AssemblyProductAttribute("UniTransport.PLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UniTransport.PLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
