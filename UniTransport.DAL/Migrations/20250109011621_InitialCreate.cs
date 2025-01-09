@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace UniTransport.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDatabaseAndStudentAndTripAndRequestedTripAndVechicleAndBookingAndUserTables : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -61,7 +61,7 @@ namespace UniTransport.DAL.Migrations
                 {
                     VehicleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    VehicleNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LicensePlate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     VehicleType = table.Column<int>(type: "int", nullable: false),
                     Capacity = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -181,19 +181,46 @@ namespace UniTransport.DAL.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    StudentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StudentId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UniversityStudentId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.Id);
+                    table.PrimaryKey("PK_Students", x => x.StudentId);
                     table.ForeignKey(
                         name: "FK_Students_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RequestedTrips",
+                columns: table => new
+                {
+                    RequestedTripId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DepartureLocation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArrivalLocation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DepartureTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RequestTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    IsPrivateRide = table.Column<bool>(type: "bit", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    StudentId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RequestedTrips", x => x.RequestedTripId);
+                    table.ForeignKey(
+                        name: "FK_RequestedTrips_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "StudentId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -210,41 +237,23 @@ namespace UniTransport.DAL.Migrations
                     Price = table.Column<double>(type: "float", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    TripStatus = table.Column<int>(type: "int", nullable: false),
+                    RequestedTripId = table.Column<int>(type: "int", nullable: true),
                     VehicleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Trips", x => x.TripId);
                     table.ForeignKey(
+                        name: "FK_Trips_RequestedTrips_RequestedTripId",
+                        column: x => x.RequestedTripId,
+                        principalTable: "RequestedTrips",
+                        principalColumn: "RequestedTripId");
+                    table.ForeignKey(
                         name: "FK_Trips_Vehicles_VehicleId",
                         column: x => x.VehicleId,
                         principalTable: "Vehicles",
                         principalColumn: "VehicleId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RequestedTrips",
-                columns: table => new
-                {
-                    RequestedTripId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DepartureLocation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArrivalLocation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DepartureTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    StudentId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RequestedTrips", x => x.RequestedTripId);
-                    table.ForeignKey(
-                        name: "FK_RequestedTrips_Students_StudentId",
-                        column: x => x.StudentId,
-                        principalTable: "Students",
-                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -255,6 +264,7 @@ namespace UniTransport.DAL.Migrations
                     BookingId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BookingTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsCancelled = table.Column<bool>(type: "bit", nullable: false),
                     StudentId = table.Column<int>(type: "int", nullable: false),
                     TripId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -265,7 +275,7 @@ namespace UniTransport.DAL.Migrations
                         name: "FK_Bookings_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
-                        principalColumn: "Id",
+                        principalColumn: "StudentId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Bookings_Trips_TripId",
@@ -335,6 +345,11 @@ namespace UniTransport.DAL.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Trips_RequestedTripId",
+                table: "Trips",
+                column: "RequestedTripId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Trips_VehicleId",
                 table: "Trips",
                 column: "VehicleId");
@@ -362,19 +377,19 @@ namespace UniTransport.DAL.Migrations
                 name: "Bookings");
 
             migrationBuilder.DropTable(
-                name: "RequestedTrips");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Trips");
 
             migrationBuilder.DropTable(
-                name: "Students");
+                name: "RequestedTrips");
 
             migrationBuilder.DropTable(
                 name: "Vehicles");
+
+            migrationBuilder.DropTable(
+                name: "Students");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

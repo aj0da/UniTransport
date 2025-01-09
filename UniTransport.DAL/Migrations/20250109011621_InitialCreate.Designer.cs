@@ -12,8 +12,8 @@ using UniTransport.DAL.Database;
 namespace UniTransport.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250107223050_CreateDatabaseAndStudentAndTripAndRequestedTripAndVechicleAndBookingAndUserTables")]
-    partial class CreateDatabaseAndStudentAndTripAndRequestedTripAndVechicleAndBookingAndUserTables
+    [Migration("20250109011621_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -169,6 +169,9 @@ namespace UniTransport.DAL.Migrations
                     b.Property<DateTime>("BookingTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsCancelled")
+                        .HasColumnType("bit");
+
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
 
@@ -196,9 +199,6 @@ namespace UniTransport.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("DepartureLocation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -208,6 +208,12 @@ namespace UniTransport.DAL.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<bool>("IsPrivateRide")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("RequestTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -224,19 +230,20 @@ namespace UniTransport.DAL.Migrations
 
             modelBuilder.Entity("UniTransport.DAL.Entities.Student", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StudentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"));
 
-                    b.Property<int>("StudentId")
+                    b.Property<int>("UniversityStudentId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
+                    b.HasKey("StudentId");
 
                     b.HasIndex("UserId");
 
@@ -277,10 +284,18 @@ namespace UniTransport.DAL.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int?>("RequestedTripId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TripStatus")
+                        .HasColumnType("int");
+
                     b.Property<int>("VehicleId")
                         .HasColumnType("int");
 
                     b.HasKey("TripId");
+
+                    b.HasIndex("RequestedTripId");
 
                     b.HasIndex("VehicleId");
 
@@ -383,7 +398,7 @@ namespace UniTransport.DAL.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("VehicleNumber")
+                    b.Property<string>("LicensePlate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -468,7 +483,7 @@ namespace UniTransport.DAL.Migrations
             modelBuilder.Entity("UniTransport.DAL.Entities.RequestedTrip", b =>
                 {
                     b.HasOne("UniTransport.DAL.Entities.Student", "Student")
-                        .WithMany()
+                        .WithMany("RequestedTrips")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -480,18 +495,26 @@ namespace UniTransport.DAL.Migrations
                 {
                     b.HasOne("UniTransport.DAL.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("UniTransport.DAL.Entities.Trip", b =>
                 {
+                    b.HasOne("UniTransport.DAL.Entities.RequestedTrip", "RequestedTrip")
+                        .WithMany()
+                        .HasForeignKey("RequestedTripId");
+
                     b.HasOne("UniTransport.DAL.Entities.Vehicle", "Vehicle")
                         .WithMany("Trips")
                         .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("RequestedTrip");
 
                     b.Navigation("Vehicle");
                 });
@@ -499,6 +522,8 @@ namespace UniTransport.DAL.Migrations
             modelBuilder.Entity("UniTransport.DAL.Entities.Student", b =>
                 {
                     b.Navigation("Bookings");
+
+                    b.Navigation("RequestedTrips");
                 });
 
             modelBuilder.Entity("UniTransport.DAL.Entities.Trip", b =>

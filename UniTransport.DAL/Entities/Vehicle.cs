@@ -10,12 +10,12 @@ namespace UniTransport.DAL.Entities
 {
     public class Vehicle
     {
-        [Key]
         public int VehicleId { get; set; }
-        public string VehicleNumber { get; set; }
+        public string LicensePlate { get; set; }
         public VehicleType VehicleType { get; set; } = VehicleType.Microbus;
         public int Capacity { get; set; }
         public bool IsActive { get; set; } = true;
+
         // Navigation properties
         public ICollection<Trip> Trips { get; set; }
     }

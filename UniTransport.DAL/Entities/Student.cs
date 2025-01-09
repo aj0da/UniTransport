@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 namespace UniTransport.DAL.Entities
 {
     public class Student
-    {
-        [Key]   
-        public int Id { get; set; }
+    {   
         public int StudentId { get; set; }
+        public int UniversityStudentId { get; set; }
+        public string UserId { get; set; }
 
         // Navigation properties
         public User User { get; set; }
         public ICollection<Booking> Bookings { get; set; }  
+        public ICollection<RequestedTrip> RequestedTrips { get; set; }  
     }
 }
