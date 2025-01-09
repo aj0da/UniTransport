@@ -1,5 +1,10 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using UniTransport.DAL.Database;
+using UniTransport.DAL.Entities;
+using UniTransport.DAL.Repository.Implementation;
+using UniTransport.DAL.Repository.Interface;
 
 namespace UniTransport.PLL
 {
@@ -9,14 +14,45 @@ namespace UniTransport.PLL
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
-
             // Database Context
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
 
+            // Authentication & Identity
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+             options =>
+             {
+                 options.LoginPath = new PathString("/Account/Login");
+                 options.AccessDeniedPath = new PathString("/Account/AccessDenied");
+             });
+
+            builder.Services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 0;
+            }).AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = new PathString("/Account/AccessDenied");
+            });
+
+
+            // Repositories and Services
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+            builder.Services.AddScoped<ITripRepository, TripRepository>();
+             
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
