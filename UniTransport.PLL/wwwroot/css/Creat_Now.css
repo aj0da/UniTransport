@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+    color: #333;
+    padding-top: 80px;
+    min-height: 100vh;
+}
+
+.box {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(36, 161, 123, 0.1);
+    padding: 30px;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(36, 161, 123, 0.15);
+}
+
+.form-section {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-section h2 {
+    color: #24a17b;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 700;
+    background: linear-gradient(45deg, #24a17b, #0a5c46);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.form-group:hover {
+    transform: translateX(5px);
+}
+
+.form-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #24a17b;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.form-section input,
+.form-section select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e1e1e1;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.form-section input:hover,
+.form-section select:hover {
+    border-color: #24a17b;
+    background-color: #fff;
+}
+
+.form-section input:focus,
+.form-section select:focus {
+    outline: none;
+    border-color: #24a17b;
+    box-shadow: 0 0 0 4px rgba(36, 161, 123, 0.1);
+    background-color: #fff;
+}
+
+.form-section input[type="date"],
+.form-section input[type="time"] {
+    cursor: pointer;
+}
+
+#submit-btn {
+    background: linear-gradient(45deg, #24a17b, #0a5c46);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 40px auto;
+    min-width: 250px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#submit-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(45deg, #0a5c46, #24a17b);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+#submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(36, 161, 123, 0.2);
+}
+
+#submit-btn:hover:before {
+    width: 100%;
+}
+
+#submit-btn:active {
+    transform: translateY(-1px);
+}
+
+.note {
+    flex: 1; 
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    height: 200px;
+    background-color: #dff9fb;
+}
+
+.note h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #7f8c8d;
+}
+
+.note-footer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    color: #2c3e50;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+
+    .box {
+        width: 95%;
+        margin: 10px auto;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .form-section h2 {
+        font-size: 1.8em;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-section input,
+    .form-section select {
+        padding: 12px;
+    }
+
+    #submit-btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px 25px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding-top: 120px;
+    }
+
+    .box {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        padding: 15px;
+    }
+
+    .form-section h2 {
+        font-size: 1.5em;
+    }
+
+    .form-section label {
+        font-size: 1rem;
+    }
+
+    .form-group:hover {
+        transform: none;
+    }
+
+    .form-section input,
+    .form-section select {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    #submit-btn {
+        margin: 30px auto;
+        padding: 12px 20px;
+        min-width: 200px;
+        font-size: 1rem;
+    }
+}

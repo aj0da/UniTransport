@@ -1,8 +1,96 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "UniTransport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Styles {
+    <link rel="stylesheet" href="~/css/h.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+}
+@*Start of home body*@
+<section class="hero">
+    <div class="content">
+        <h1>Welcome to Uni Transport</h1>
+        <p class="hero-text">Your trusted partner for university transportation. Safe, reliable, and convenient rides for students.</p>
+        <div class="cta-buttons">
+            <a asp-controller="Trip" asp-action="Book" class="cta-button primary">Book Now</a>
+            <a asp-controller="RequestedTrip" asp-action="RequestNow" class="cta-button secondary">Request Trip</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="~/assets/car.png" alt="University Transport Service">
+    </div>
+</section>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="features">
+    <h2>Why Choose Us?</h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Safe & Secure</h3>
+            <p>Verified drivers and monitored trips for your safety</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-clock"></i>
+            <h3>On-Time Service</h3>
+            <p>Punctual pickups and drop-offs</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-money-bill-wave"></i>
+            <h3>Affordable</h3>
+            <p>Student-friendly prices and group discounts</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-route"></i>
+            <h3>Flexible Routes</h3>
+            <p>Multiple routes covering all university areas</p>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Sign Up</h3>
+            <p>Create your account with your student details</p>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Book a Ride</h3>
+            <p>Choose your route and schedule</p>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Travel</h3>
+            <p>Enjoy your comfortable ride</p>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-phone"></i> +1234567890</p>
+            <p><i class="fas fa-envelope"></i> support@unitransport.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <a asp-controller="Trip" asp-action="Book">Book a Ride</a>
+            <a href="#">About Us</a>
+            <a href="#">FAQs</a>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Uni Transport. All rights reserved.</p>
+    </div>
+</footer>

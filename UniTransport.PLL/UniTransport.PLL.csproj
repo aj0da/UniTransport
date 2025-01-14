@@ -18,4 +18,8 @@
     <ProjectReference Include="..\UniTransport.BLL\UniTransport.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\students\" />
+  </ItemGroup>
+
 </Project>

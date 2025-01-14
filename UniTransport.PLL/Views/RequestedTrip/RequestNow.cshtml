@@ -1,0 +1,62 @@
+﻿@using UniTransport.BLL.ModelVM.RequestedTripVM
+@model RequestNowVM
+@{
+    ViewData["Title"] = "Request Now";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/Creat_Now.css">
+}
+<div class="box">
+    <div class="form-section">
+        <h2>Create New Trip</h2>
+        <form asp-controller="RequestedTrip" asp-action="RequestNow">
+            <div class="form-group">
+                <label for="from">From:</label>
+                <select id="from" asp-for="DepartureLocation" required>
+                    <option value="">Select pickup location</option>
+                    <option value="مبني م">مبني م</option>
+                    <option value="مبني ل">مبني ل</option>
+                    <option value="مبني ن">مبني ن</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="to">To:</label>
+                <select id="to" asp-for="ArrivalLocation" required>
+                    <option value="">Select destination</option>
+                    <option value="الحاسبات والمعلومات">الحاسبات والمعلومات</option>
+                    <option value="طب بشري">طب بشري</option>
+                    <option value="طب الفم والاسنان">طب الفم والاسنان</option>
+                    <option value="بيطري">بيطري</option>
+                    <option value="علاج طبيعي">علاج طبيعي</option>
+                    <option value="صيدلة">صيدلة</option>
+                    <option value="علوم">علوم</option>
+                    <option value="حقوق">حقوق</option>
+                    <option value="تجارة">تجارة</option>
+                    <option value="اعلام">اعلام</option>
+                    <option value="اداب">اداب</option>
+                    <option value="تربية">تربية</option>
+                    <option value="تربية رياضية">تربية رياضية</option>
+                    <option value="تربية نوعية">تربية نوعية</option>
+                    <option value="تمريض">تمريض</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" asp-for="DepartureDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="time" id="time" asp-for="DepartureTime" required>
+            </div>
+
+            <button type="submit" id="submit-btn" class="submit-btn">Create Trip</button>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @* <script src="~/js/Creat_Now.js"></script> *@
+}

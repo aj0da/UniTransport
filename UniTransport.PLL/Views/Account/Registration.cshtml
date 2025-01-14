@@ -1,0 +1,93 @@
+﻿@using UniTransport.BLL.ModelVM.StudentVM
+@model StudentRegistrationVM  
+
+@*Registration Page - Student View*@
+
+@{
+    ViewData["Title"] = "Sign Up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/sign.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+}
+
+<section>
+    <div class="signin">
+        <div class="content">
+            <h2>Sign Up</h2>
+            <form class="form" id="signup-form" asp-controller="Account" asp-action="Registration">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="inputBox">
+                    <label for="signup-FirstName">First Name</label>
+                    <input type="text" id="signup-FirstName" required asp-for="FirstName">
+                </div>
+                <div class="inputBox">
+                    <label for="signup-LastName">Last Name</label>
+                    <input type="text" id="signup-LastName" required asp-for="LastName">
+                </div>
+                <div class="inputBox">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" required asp-for="UserName">
+                </div>
+                <div class="inputBox">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required asp-for="Email">
+                </div>
+                <div class="inputBox">
+                    <label for="signup-phone">Phone Number</label>
+                    <input type="tel" id="signup-phone" pattern="0[0-9]{9}" placeholder="0xxxxxxxxx" required asp-for="PhoneNumber">
+                </div>
+                <div class="inputBox">
+                    <label for="signup-student-id">Student ID</label>
+                    <input type="number" id="signup-student-id" required asp-for="StudentId">
+                </div>
+                <div class="inputBox">
+                    <label for="signup-password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="signup-password" required asp-for="Password">
+                        <button type="button" class="toggle-password" data-target="signup-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-requirements">
+                        <p>Password must contain:</p>
+                        <ul>
+                            <li id="signup-length">At least 8 characters</li>
+                            <li id="signup-uppercase">At least one uppercase letter</li>
+                            <li id="signup-lowercase">At least one lowercase letter</li>
+                            <li id="signup-number">At least one number</li>
+                            <li id="signup-special">At least one special character</li>
+                        </ul>
+                        <div class="password-strength"></div>
+                    </div>
+                </div>
+                <div class="inputBox">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <div class="password-container">
+                        <input type="password" id="signup-confirm-password" required asp-for="ConfirmPassword">
+                        <button type="button" class="toggle-password" data-target="signup-confirm-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="message-container">
+                    <label id="signup-message" style="display: none;"></label>
+                </div>
+                <div class="inputBox">
+                    <input type="submit" id="signup-submit" value="Sign Up">
+                </div>
+                <div class="links">
+                    <span>Already have an account?</span>
+                    <a asp-controller="Account" asp-action="Login">Log in</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/password-toggle.js"></script>
+    <script src="~/js/validation.js"></script>
+}
+

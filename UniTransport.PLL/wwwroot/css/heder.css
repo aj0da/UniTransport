@@ -1,0 +1,233 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+    height: 70px;
+    border-bottom: 3px solid #24a17b;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 10px;
+    min-width: 25%;
+    border-radius: 10px;
+    height: 70px;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.logo span {
+    color: #24a17b;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+}
+
+nav a:hover {
+    color: #24a17b;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #24a17b;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 2px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.login-link, .logout-link {
+    background-color: #24a17b;
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.login-link:hover, .logout-link:hover {
+    background-color: #0a5c46;
+    transform: translateY(-2px);
+}
+
+.logout-link {
+    background-color: #4e023c;
+}
+
+.logout-link:hover {
+    background-color: #2e0123;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    nav a:last-child {
+        border-bottom: none;
+    }
+
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    .logo {
+        min-width: auto;
+    }
+
+    .logo span {
+        font-size: 1.2rem;
+    }
+
+    .logo img {
+        width: 35px;
+        height: 35px;
+    }
+
+    nav {
+        top: 60px;
+        padding: 15px;
+    }
+
+    nav a {
+        font-size: 0.95rem;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer_section {
+    margin-top: -1.5px;
+    background-color: #4e023c;
+}
+
+.footer_section p {
+    margin: 0;
+    padding: 25px 0;
+    color: #ffffff;
+    text-align: center;
+    border-top: 0.8px solid #ffffff;
+    margin-left: 10%;
+    max-width: 80%;
+}
+
+.footer_section a {
+    color: inherit;
+}
+
+#social-links {
+    border: none;
+    padding-top: 10px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    margin: 0px auto;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+}
+
+.service_section .box .detail-box {
+    margin-top: 15px;
+    line-height: 20px;
+}
+
+.service_section .box .detail-box h5 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.service_section .box .detail-box p {
+    margin: 0;
+}

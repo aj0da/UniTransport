@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #080808;
+  }
+  
+  section {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  
+  section::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#0a5c46, #24a17b, #0a5c46);
+    animation: anim 5s linear infinite;
+  }
+  
+  @keyframes anim {
+    0% {
+      transform: translateY(-100%);
+    }
+  
+    100% {
+      transform: translateY(100%);
+    }
+  }
+  
+  @keyframes movedown {
+  
+    0% {
+      transform: translateY(-50%);
+    }
+  }
+  
+  section span {
+    position: relative;
+    display: block;
+    width: calc(6.25vw - 2px);
+    height: calc(6.25vw - 2px);
+    background: #949495;
+    z-index: 2;
+    transition: 1.5s;
+  }
+  
+  section span:hover {
+    background: #4e023c;
+    transition: 0s;
+  }
+  
+  section .signin {
+    position: absolute;
+    width: 400px;
+    min-height: 320px;
+    background: #e8eaed;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
+    animation: movedown 1s linear;
+  }
+  
+  section .signin .content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  section .signin .content h2 {
+    font-size: 2em;
+    color: #03602d;
+    text-transform: uppercase;
+  }
+  
+  section .signin .content .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  section .signin .content .form .inputBox {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  section .signin .content .form .inputBox label {
+    display: block;
+    margin-bottom: 5px;
+    color: #110101;
+    font-weight: 500;
+    font-size: 0.9em;
+  }
+  
+  section .signin .content .form .inputBox input {
+    position: relative;
+    width: 100%;
+    background: #dbdee1;
+    border: none;
+    outline: none;
+    padding: 12px 10px;
+    border-radius: 4px;
+    color: #0e0101;
+    font-weight: 500;
+    font-size: 1em;
+  }
+  
+  section .signin .content .form .inputBox i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 15px 10px;
+    font-style: normal;
+    color: #110101;
+    transition: 0.5s;
+    pointer-events: none;
+    font-size: 1em;
+  }
+  
+  .signin .content .form .inputBox input:focus ~ i,
+  .signin .content .form .inputBox input:valid ~ i {
+    transform: translateY(-7.5px);
+    font-size: 0.8em;
+    color: #0d0d0d;
+  }
+  
+  .signin .content .form .links {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  .signin .content .form .links a {
+    color: #070707;
+    text-decoration: none;
+  }
+  
+  .signin .content .form .links a:hover {
+    color: #07a669;
+    transition: 0.3s;
+  }
+  
+  .signin .content .form .inputBox input[type="submit"] {
+    padding: 10px;
+    background-image: linear-gradient(45deg, #24a17b, #0a5c46);
+    color: #000;
+    font-weight: 600;
+    font-size: 1.35em;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:active {
+    opacity: 0.6;
+  }
+  
+  @media (max-width: 900px) {
+    section span {
+      width: calc(10vw - 2px);
+      height: calc(10vw - 2px);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    section span {
+      width: calc(20vw - 2px);
+      height: calc(20vw - 2px);
+    }
+  }
+  
+  .message-container {
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .message {
+    display: none;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  #sub:disabled {
+    cursor: not-allowed;
+  }
+  
+  .loading {
+    width: 150px;
+    height: max-content;
+    z-index: 10000;
+    background-color: none;
+  }
+  
+  video {
+    width: 100px;
+    height: 100px;
+  }
+
+  .remember-me {
+    position: relative;
+    width: 100%;
+    margin: 5px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .remember-me input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #45f3ff;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+
+  .remember-me input[type="checkbox"]:checked {
+    background: #45f3ff;
+  }
+
+  .remember-me input[type="checkbox"]:checked::before {
+    content: '✓';
+    color: #1c1c1c;
+    font-size: 14px;
+    font-weight: bold;
+    animation: checkmark 0.2s ease forwards;
+  }
+
+  .remember-me input[type="checkbox"]:hover {
+    border-color: #fff;
+  }
+
+  .remember-me label {
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #8f8f8f;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+
+  .remember-me:hover label {
+    color: #45f3ff;
+  }
+
+  @keyframes checkmark {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .password-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .password-container input {
+    width: 100%;
+    padding-right: 40px;
+  }
+
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+  }
+
+  .toggle-password:hover {
+    color: #333;
+  }
+
+  .toggle-password:focus {
+    outline: none;
+  }
+
+  .toggle-password i {
+    font-size: 16px;
+  }
+
+  .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+  }
+
+  .remember-forgot label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #666;
+  }
+
+  .remember-forgot a {
+    color: #666;
+    text-decoration: none;
+  }
+
+  .remember-forgot a:hover {
+    text-decoration: underline;
+  }
+
+  .message {
+    text-align: center;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
