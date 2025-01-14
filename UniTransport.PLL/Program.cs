@@ -66,6 +66,9 @@ namespace UniTransport.PLL
             builder.Services.AddScoped<IRequestedTripRepository, RequestedTripRepository>();
             builder.Services.AddScoped<IRequestedTripService, RequestedTripService>();
 
+            builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
+            builder.Services.AddScoped<IVehicleService, VehicleService>();
+
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddHttpContextAccessor();
 
@@ -81,6 +84,7 @@ namespace UniTransport.PLL
                 try
                 {
                     await SeedData.InitializeAsync(services); // Call the SeedData method
+                    await TestDataSeeder.SeedTestDataAsync(services); // Add test data
                 }
                 catch (Exception ex)
                 {

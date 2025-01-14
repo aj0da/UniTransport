@@ -28,17 +28,39 @@ namespace UniTransport.PLL.Controllers
         }
         [HttpPost]
 		[Authorize(Roles = "Student")]
-		public IActionResult RequestNow(RequestNowVM requestNowVM)
+        public IActionResult RequestNow(RequestNowVM requestNowVM)
         {
-            if (ModelState.IsValid) 
+            if (requestNowVM == null)
             {
-                if (_requestedTripService.CreatRequestedTrip(requestNowVM, GetLoggedInUserId()))
+                return BadRequest("Invalid request data");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(requestNowVM);
+            }
+
+            try
+            {
+                var userId = GetLoggedInUserId();
+                if (_requestedTripService.CreatRequestedTrip(requestNowVM, userId))
                 {
+                    TempData["Success"] = "Trip request submitted successfully";
                     return RedirectToAction("Profile", "Student");
                 }
-                return RedirectToAction("Index", "Home");
+
+                ModelState.AddModelError("", "Failed to create trip request. Please try again.");
+                return View(requestNowVM);
             }
-            return View(requestNowVM);
+            catch (InvalidOperationException)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "An error occurred while processing your request. Please try again.");
+                return View(requestNowVM);
+            }
         }
     }
 }

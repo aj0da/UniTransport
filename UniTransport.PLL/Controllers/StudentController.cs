@@ -20,10 +20,26 @@ namespace UniTransport.PLL.Controllers
 
         [Authorize(Roles ="Student")]
         public IActionResult Profile()
-		{
-            var studentProfile = _studentService.GetStudentProfile(GetLoggedInUserId()); 
-			return View(studentProfile);
-		}
+        {
+            try
+            {
+                var userId = GetLoggedInUserId();
+                var studentProfile = _studentService.GetStudentProfile(userId);
+                if (studentProfile == null)
+                {
+                    return NotFound("Student profile not found");
+                }
+                return View(studentProfile);
+            }
+            catch (InvalidOperationException)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+        }
+    }
 
-	}
 }
