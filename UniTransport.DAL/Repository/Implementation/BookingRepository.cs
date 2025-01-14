@@ -56,6 +56,45 @@ namespace UniTransport.DAL.Repository.Implementation
                 return false;
             }
         }
+
+
+
+        public async Task<List<Booking>> GetUserBookingsForDateAsync(string userId, DateTime date)
+    {
+        return await _context.Bookings
+            .Include(b => b.Trip)
+            .Where(b => b.Student.UserId == userId 
+                    && b.Trip.DepartureTime.Date == date.Date
+                    && !b.IsCancelled)
+            .ToListAsync();
+    }
+
+    public async Task<bool> CreateBookingsAsync(List<Booking> bookings)
+    {
+        using var transaction = await _context.Database.BeginTransactionAsync();
+        try
+        {
+            foreach (var booking in bookings)
+            {
+                var trip = await _context.Trips.FindAsync(booking.TripId);
+                if (trip == null || trip.AvailableSeats <= 0)
+                {
+                    throw new InvalidOperationException($"Trip {booking.TripId} is not available");
+                }
+                trip.AvailableSeats--;
+            }
+
+            await _context.Bookings.AddRangeAsync(bookings);
+            await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
+            return true;
+        }
+        catch
+        {
+            await transaction.RollbackAsync();
+            return false;
+        }
+    }
     }
 
 }
