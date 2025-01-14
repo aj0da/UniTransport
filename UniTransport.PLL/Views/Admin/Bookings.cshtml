@@ -1,0 +1,138 @@
+@model IEnumerable<UniTransport.DAL.Entities.Booking>
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Manage Bookings</h2>
+        <div>
+            <button class="btn btn-outline-primary me-2" onclick="exportBookings()">
+                <i class="fas fa-download"></i> Export
+            </button>
+            <button class="btn btn-primary" onclick="showAddBookingModal()">
+                <i class="fas fa-plus"></i> Add Booking
+            </button>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="tripFilter" class="form-label">Trip</label>
+                    <select class="form-select" id="tripFilter">
+                        <option value="">All Trips</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="dateFilter" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="dateFilter">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="statusFilter" class="form-label">Status</label>
+                    <select class="form-select" id="statusFilter">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">&nbsp;</label>
+                    <button class="btn btn-primary d-block w-100" onclick="applyFilters()">
+                        <i class="fas fa-filter"></i> Apply Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Student</th>
+                    <th>Trip</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var booking in Model)
+                {
+                    <tr>
+                        <td>@booking.BookingId</td>
+                        <td>@($"{booking.Student?.User?.FirstName} {booking.Student?.User?.LastName}")</td>
+                        <td>@booking.Trip?.Vehicle?.LicensePlate</td>
+                        <td>@booking.Trip?.DepartureLocation</td>
+                        <td>@booking.Trip?.ArrivalLocation</td>
+                        <td>@booking.Trip?.DepartureTime.ToString("g")</td>
+                        <td>
+                            <span class="badge @(!booking.IsCancelled ? "bg-success" : "bg-danger")">
+                                @(!booking.IsCancelled ? "Active" : "Cancelled")
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-info me-2" onclick="viewBooking('@booking.BookingId')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            @if (!booking.IsCancelled)
+                            {
+                                <button class="btn btn-sm btn-danger" onclick="cancelBooking('@booking.BookingId')">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- View Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Booking Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="bookingDetails">
+                <!-- Booking details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function viewBooking(id) {
+        // Load booking details
+        $('#bookingModal').modal('show');
+    }
+
+    function cancelBooking(id) {
+        if (confirm('Are you sure you want to cancel this booking?')) {
+            // Implement cancel functionality
+        }
+    }
+
+    function exportBookings() {
+        // Implement export functionality
+    }
+
+    function showAddBookingModal() {
+        // Implement add booking functionality
+    }
+
+    function applyFilters() {
+        const trip = $('#tripFilter').val();
+        const date = $('#dateFilter').val();
+        const status = $('#statusFilter').val();
+        // Implement filter functionality
+    }
+</script>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.BLL\\UniTransport.BLL.csproj": {}
+    "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.BLL\\UniTransport.BLL.csproj": {}
   },
   "projects": {
-    "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.BLL\\UniTransport.BLL.csproj": {
+    "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.BLL\\UniTransport.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.BLL\\UniTransport.BLL.csproj",
+        "projectUniqueName": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.BLL\\UniTransport.BLL.csproj",
         "projectName": "UniTransport.BLL",
-        "projectPath": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.BLL\\UniTransport.BLL.csproj",
+        "projectPath": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.BLL\\UniTransport.BLL.csproj",
         "packagesPath": "C:\\Users\\Abdulrahman\\.nuget\\packages\\",
-        "outputPath": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.BLL\\obj\\",
+        "outputPath": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Abdulrahman\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.DAL\\UniTransport.DAL.csproj": {
-                "projectPath": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.DAL\\UniTransport.DAL.csproj"
+              "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.DAL\\UniTransport.DAL.csproj": {
+                "projectPath": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.DAL\\UniTransport.DAL.csproj"
               }
             }
           }
@@ -49,6 +49,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -69,14 +79,14 @@
         }
       }
     },
-    "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.DAL\\UniTransport.DAL.csproj": {
+    "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.DAL\\UniTransport.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.DAL\\UniTransport.DAL.csproj",
+        "projectUniqueName": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.DAL\\UniTransport.DAL.csproj",
         "projectName": "UniTransport.DAL",
-        "projectPath": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.DAL\\UniTransport.DAL.csproj",
+        "projectPath": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.DAL\\UniTransport.DAL.csproj",
         "packagesPath": "C:\\Users\\Abdulrahman\\.nuget\\packages\\",
-        "outputPath": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\UniTransport\\UniTransport.DAL\\obj\\",
+        "outputPath": "D:\\College\\College Materials\\3rd Year\\1st Semester\\FieldTraining\\Project\\BackEnd\\0\\1\\2\\UniTransport\\UniTransport.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Abdulrahman\\AppData\\Roaming\\NuGet\\NuGet.Config",

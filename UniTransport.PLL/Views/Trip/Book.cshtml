@@ -1,0 +1,89 @@
+﻿@using UniTransport.BLL.ModelVM.TripVM
+@model IEnumerable<BookTripsVM>
+@{
+	ViewData["Title"] = "Book";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+	<link rel="stylesheet" href="../css/Book.css">
+}
+<div class="container">
+	<div class="date-card">
+		<div class="date-header">Choose Your Travel Date</div>
+		<div class="date-content">
+			<input type="date" id="bookingDate">
+			<div id="dateAlert">Please select a date to see available trips</div>
+		</div>
+	</div>
+
+	@* Available Trips Table *@
+	<div class="trips-container">
+		<h2>Available Trips</h2>
+		<div id="selected-trips-summary">
+			<h3>Selected Trips: <span id="selected-count">0</span></h3>
+			<div id="selected-trips-list"></div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Car Number</th>
+					<th>Destination</th>
+					<th>Available Seats</th>
+					<th>Departure Time</th>
+					<th>Price</th>
+					<th style="padding-left: 90px;">Actions</th>
+				</tr>
+			</thead>
+			<tbody id="trips-table-body">
+				@{
+					if (Model is not null && Model.Count() != 0)
+					{
+						int i = 0;
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>@item.LicensePlate</td>
+								<td>@item.ArrivalLocation</td>
+								<td class="seats">@item.AvailableSeats</td>
+								<td>@item.DepartureTime</td>
+								<td>@item.Price</td>
+								<td style="padding-left: 60px;">
+									<button type="button" class="add" onclick="toggleTrip(this)">Add</button>
+									<input type="hidden" form="bookForm" class="is-booked" name="trips[@i].IsBooked" value="false">
+									<input type="hidden" form="bookForm" name="trips[@i].TripId" value="@item.TripId" />
+									<input type="hidden" form="bookForm" name="trips[@i].AvailableSeats" value="@item.AvailableSeats" />
+								</td>
+							</tr>
+							i++;
+						}
+					}
+					else
+					{
+						<tr><td colspan="6" style="align-content:center">No Available Trips</td></tr>
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+
+	<div class="booking-summary-footer">
+		<div class="booking-details">
+			<div class="total-trips">
+				Total Selected Trips: <span id="footer-selected-count">0</span>
+			</div>
+			<div class="total-price">
+				Total Price: <span id="footer-total-price">0.00</span>
+			</div>
+		</div>
+		<div class="footer-buttons">
+			<button class="create-button" onclick="window.location.href='@Url.Action("RequestNow", "RequestedTrip")'">Request Now</button>
+			<form id="bookForm" asp-controller="Trip" asp-action="Book">
+				<button type="submit" id="book-all-btn" class="book-button" disabled>Book Now</button>
+			</form>
+
+		</div>
+	</div>
+</div>
+@section Scripts {
+	<script src="~/js/book.js"></script>
+}

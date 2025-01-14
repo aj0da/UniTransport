@@ -33,8 +33,13 @@ namespace UniTransport.DAL.Repository.Implementation
         public async Task<Student> GetByUserIdAsync(string userId)
         {
             return await _context.Students
-                .Include(s => s.User)
-                .FirstOrDefaultAsync(s => s.UserId == userId);
+            .Include(s => s.User) // Include the User navigation property
+            .Include(s => s.Bookings)
+                .ThenInclude(b => b.Trip)
+                    .ThenInclude(t => t.Vehicle) // Include nested properties for Bookings
+            .Include(s => s.RequestedTrips) // Include RequestedTrips
+            .Where(s => s.User.Id == userId) // Filter by UserId
+            .FirstOrDefaultAsync();
         }
     }
 

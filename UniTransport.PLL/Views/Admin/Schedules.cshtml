@@ -1,0 +1,132 @@
+@model IEnumerable<UniTransport.DAL.Entities.Trip>
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Manage Schedules</h2>
+        <button class="btn btn-primary" onclick="showAddTripModal()">
+            <i class="fas fa-plus"></i> Add Trip
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Vehicle</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                    <th>Price</th>
+                    <th>Available Seats</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var trip in Model)
+                {
+                    <tr>
+                        <td>@trip.Vehicle?.LicensePlate</td>
+                        <td>@trip.DepartureLocation</td>
+                        <td>@trip.ArrivalLocation</td>
+                        <td>@trip.DepartureTime.ToString("g")</td>
+                        <td>@trip.ArrivalTime.ToString("g")</td>
+                        <td>@trip.Price.ToString("C")</td>
+                        <td>@trip.AvailableSeats</td>
+                        <td>
+                            <span class="badge @(trip.TripStatus == UniTransport.DAL.Enum.TripStatus.Active ? "bg-success" : "bg-danger")">
+                                @trip.TripStatus
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary me-2" onclick="editTrip('@trip.TripId')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteTrip('@trip.TripId')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add/Edit Trip Modal -->
+<div class="modal fade" id="tripModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tripModalTitle">Add Trip</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="tripForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="vehicleId" class="form-label">Vehicle</label>
+                            <select class="form-select" id="vehicleId" required>
+                                <!-- Populate with vehicles -->
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" step="0.01" class="form-control" id="price" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="departureLocation" class="form-label">From</label>
+                            <input type="text" class="form-control" id="departureLocation" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="arrivalLocation" class="form-label">To</label>
+                            <input type="text" class="form-control" id="arrivalLocation" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="departureTime" class="form-label">Departure Time</label>
+                            <input type="datetime-local" class="form-control" id="departureTime" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="arrivalTime" class="form-label">Arrival Time</label>
+                            <input type="datetime-local" class="form-control" id="arrivalTime" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveTrip()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showAddTripModal() {
+        $('#tripModalTitle').text('Add Trip');
+        $('#tripForm')[0].reset();
+        $('#tripModal').modal('show');
+    }
+
+    function editTrip(id) {
+        $('#tripModalTitle').text('Edit Trip');
+        // Load trip data and show modal
+        $('#tripModal').modal('show');
+    }
+
+    function deleteTrip(id) {
+        if (confirm('Are you sure you want to delete this trip?')) {
+            // Implement delete functionality
+        }
+    }
+
+    function saveTrip() {
+        // Implement save functionality
+        $('#tripModal').modal('hide');
+    }
+</script>

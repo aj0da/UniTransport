@@ -13,3 +13,48 @@ D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd
 D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.pdb
 D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.genruntimeconfig.cache
 D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\UniTransport\UniTransport.DAL\obj\Debug\net8.0\ref\UniTransport.DAL.dll
+d:\ui ux\team project\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.deps.json
+d:\ui ux\team project\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.runtimeconfig.json
+d:\ui ux\team project\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.dll
+d:\ui ux\team project\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.pdb
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.csproj.AssemblyReference.cache
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.GeneratedMSBuildEditorConfig.editorconfig
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.AssemblyInfoInputs.cache
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.AssemblyInfo.cs
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.csproj.CoreCompileInputs.cache
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.sourcelink.json
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.dll
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\refint\UniTransport.DAL.dll
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.pdb
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.genruntimeconfig.cache
+d:\ui ux\team project\UniTransport\UniTransport.DAL\obj\Debug\net8.0\ref\UniTransport.DAL.dll
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.deps.json
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.runtimeconfig.json
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.dll
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.pdb
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.csproj.AssemblyReference.cache
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.GeneratedMSBuildEditorConfig.editorconfig
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.AssemblyInfoInputs.cache
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.AssemblyInfo.cs
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.csproj.CoreCompileInputs.cache
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.sourcelink.json
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.dll
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\refint\UniTransport.DAL.dll
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.pdb
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.genruntimeconfig.cache
+d:\ui ux\team project\1.7\UniTransport\UniTransport.DAL\obj\Debug\net8.0\ref\UniTransport.DAL.dll
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.deps.json
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.runtimeconfig.json
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.dll
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\bin\Debug\net8.0\UniTransport.DAL.pdb
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.csproj.AssemblyReference.cache
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.AssemblyInfoInputs.cache
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.AssemblyInfo.cs
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.csproj.CoreCompileInputs.cache
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.sourcelink.json
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.dll
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\refint\UniTransport.DAL.dll
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.pdb
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\UniTransport.DAL.genruntimeconfig.cache
+D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.DAL\obj\Debug\net8.0\ref\UniTransport.DAL.dll

@@ -17,39 +17,83 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UniTransport.PLL
 build_property.RootNamespace = UniTransport.PLL
-build_property.ProjectDir = D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\UniTransport\UniTransport.PLL\
+build_property.ProjectDir = D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.PLL\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\UniTransport\UniTransport.PLL
+build_property.MSBuildProjectDirectory = D:\College\College Materials\3rd Year\1st Semester\FieldTraining\Project\BackEnd\0\1\2\UniTransport\UniTransport.PLL
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/UniTransport/UniTransport.PLL/Views/Home/Index.cshtml]
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Account/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Admin/Bookings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va2luZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Admin/Schedules.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2NoZWR1bGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Admin/Users.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Admin/Vehicles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmVoaWNsZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/UniTransport/UniTransport.PLL/Views/Home/Privacy.cshtml]
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/UniTransport/UniTransport.PLL/Views/Shared/Error.cshtml]
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/RequestedTrip/RequestNow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVxdWVzdGVkVHJpcFxSZXF1ZXN0Tm93LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/UniTransport/UniTransport.PLL/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/UniTransport/UniTransport.PLL/Views/_ViewImports.cshtml]
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Student/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Trip/Book.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJpcFxCb29rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/UniTransport/UniTransport.PLL/Views/_ViewStart.cshtml]
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/UniTransport/UniTransport.PLL/Views/Shared/_Layout.cshtml]
+[D:/College/College Materials/3rd Year/1st Semester/FieldTraining/Project/BackEnd/0/1/2/UniTransport/UniTransport.PLL/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-u0p7l1eozq

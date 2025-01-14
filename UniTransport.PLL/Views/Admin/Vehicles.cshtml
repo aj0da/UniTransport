@@ -1,0 +1,111 @@
+@model IEnumerable<UniTransport.DAL.Entities.Vehicle>
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Manage Vehicles</h2>
+        <button class="btn btn-primary" onclick="showAddVehicleModal()">
+            <i class="fas fa-plus"></i> Add Vehicle
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>License Plate</th>
+                    <th>Type</th>
+                    <th>Capacity</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var vehicle in Model)
+                {
+                    <tr>
+                        <td>@vehicle.LicensePlate</td>
+                        <td>@vehicle.VehicleType</td>
+                        <td>@vehicle.Capacity</td>
+                        <td>
+                            <span class="badge @(vehicle.IsActive ? "bg-success" : "bg-danger")">
+                                @(vehicle.IsActive ? "Active" : "Inactive")
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary me-2" onclick="editVehicle('@vehicle.VehicleId')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteVehicle('@vehicle.VehicleId')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add Vehicle Modal -->
+<div class="modal fade" id="vehicleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="vehicleModalTitle">Add Vehicle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="vehicleForm">
+                    <div class="mb-3">
+                        <label for="licensePlate" class="form-label">License Plate</label>
+                        <input type="text" class="form-control" id="licensePlate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="vehicleType" class="form-label">Vehicle Type</label>
+                        <select class="form-select" id="vehicleType" required>
+                            <option value="Microbus">Microbus</option>
+                            <option value="Bus">Bus</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="capacity" class="form-label">Capacity</label>
+                        <input type="number" class="form-control" id="capacity" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="isActive" checked>
+                        <label class="form-check-label" for="isActive">Active</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveVehicle()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showAddVehicleModal() {
+        $('#vehicleModalTitle').text('Add Vehicle');
+        $('#vehicleForm')[0].reset();
+        $('#vehicleModal').modal('show');
+    }
+
+    function editVehicle(id) {
+        $('#vehicleModalTitle').text('Edit Vehicle');
+        // Load vehicle data and show modal
+        $('#vehicleModal').modal('show');
+    }
+
+    function deleteVehicle(id) {
+        if (confirm('Are you sure you want to delete this vehicle?')) {
+            // Implement delete functionality
+        }
+    }
+
+    function saveVehicle() {
+        // Implement save functionality
+        $('#vehicleModal').modal('hide');
+    }
+</script>

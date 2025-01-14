@@ -1,0 +1,144 @@
+﻿@using UniTransport.BLL.ModelVM.StudentVM
+@model StudentProfileVM
+@{
+	ViewData["Title"] = "Profile";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+	<link rel="stylesheet" href="~/css/profile.css">
+}
+<!--الحاويه الخارجيه-->
+<div class="profile-container">
+	<!-- الصوره -->
+	<div class="profile-picture-container">
+		<label for="upload-image">
+			<img src="~/assets/default-profile.jpg" alt="User Photo" class="profile-picture" id="profile-image">
+			<span class="add-image-icon">+</span>
+			<input type="file" id="upload-image" accept="image/*" onchange="loadImage(event)" style="display: none;">
+		</label>
+	</div>
+	<!-- معلومات المستخدم -->
+	<div class="user-info">
+		<h2>Your Information</h2>
+		<p><strong>Name:</strong> <span id="profile-user-name">@Model.StudentName</span></p>
+		<p><strong>Email:</strong> <span id="profile-user-email">@Model.Email</span></p>
+		<p><strong>ID:</strong> <span id="profile-user-id">@Model.UniversityStudentId</span></p>
+
+		<div class="button-group">
+			<button class="update-button" onclick="toggleEditMode()">Update</button>
+		</div>
+	</div>
+
+	<!-- زرار الحجز -->
+	<div class="booking-button">
+		<button class="booking-link" onclick="window.location.href='@Url.Action("BooK", "Trip")'">Book NOW</button>
+	</div>
+
+	@*Show student trip bookings*@
+	<!-- حاويه جدول المواعيد -->
+	<div class="reservations">
+		<h3>Your Reservations</h3>
+		<table>
+			<tr>
+				<th>From</th>
+				<th>To</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>License Plate</th>
+			</tr>
+			<tbody id="profile-reservations-list">
+				@if (Model.Bookings is not null && Model.Bookings.Count() != 0)
+				{
+					@foreach (var book in Model.Bookings)
+					{
+						<tr>
+							<td>@book.DepartureLocation</td>
+							<td>@book.ArrivalLocation</td>
+							<td>@book.DepartureTime.ToShortDateString()</td>
+							<td>@book.DepartureTime.ToShortTimeString()</td>
+							<td>@book.LicensePlate</td>
+						</tr>
+					}
+				}
+				else
+				{
+					<tr>
+						<td colspan="5" style="align-content:center">No reservations found</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+
+	@*Show student trip requestes*@
+	<!-- حاوية جدول الحجز -->
+	<div class="schedule">
+		<h3>Your Requests</h3>
+		<table>
+			<tr>
+				<th>Request Time</th>
+				<th>Departure</th>
+				<th>Arrival</th>
+				<th>Departure Time</th>
+				<th>Status</th>
+			</tr>
+			<tbody id="profile-schedule-list">
+				@if (Model.RequestedTrips is not null && Model.RequestedTrips.Count() != 0)
+				{
+					@foreach (var request in Model.RequestedTrips)
+					{
+						<tr>
+							<td>@request.RequestTime</td>
+							<td>@request.DepartureLocation</td>
+							<td>@request.ArrivalLocation</td>
+							<td>@request.DepartureTime</td>
+							@switch (((int)@request.Status))
+							{
+								case 0:
+									<td>Pending</td>
+									break;
+								case 1:
+									<td>Approved</td>
+									break;
+								case 2:
+									<td>Rejected</td>
+									break;
+							}
+
+						</tr>
+					}
+				}
+				else
+				{
+					<tr>
+						<td colspan="5" style="align-content:center">No Requests found</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- جدول الابديت -->
+<div class="edit-modal" id="profile-edit-modal" style="display: none;">
+	<h3>Update Data</h3>
+	<div class="edit-field">
+		<label for="profile-edit-name">Name:</label>
+		<input type="text" id="profile-edit-name" placeholder="Enter name">
+	</div>
+	<div class="edit-field">
+		<label for="profile-edit-email">Email:</label>
+		<input type="text" id="profile-edit-email" placeholder="Enter email">
+	</div>
+	<div class="edit-field">
+		<label for="profile-edit-id">ID:</label>
+		<input type="text" id="profile-edit-id" placeholder="Enter ID">
+	</div>
+	<div class="edit-buttons">
+		<button onclick="saveData()">Save</button>
+		<button onclick="toggleEditMode()">Cancel</button>
+	</div>
+</div>
+@section Scripts {
+	<script src="~/js/profile.js"></script>
+}

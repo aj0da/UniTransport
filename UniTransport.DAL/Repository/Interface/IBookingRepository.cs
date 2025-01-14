@@ -13,5 +13,9 @@ namespace UniTransport.DAL.Repository.Interface
         Task<IEnumerable<Booking>> GetBookingsByStudentIdAsync(int studentId);
         Task<IEnumerable<Booking>> GetBookingsByTripIdAsync(int tripId);
         Task<bool> CancelBookingAsync(int bookingId);
+
+
+        Task<List<Booking>> GetUserBookingsForDateAsync(string userId, DateTime date);
+        Task<bool> CreateBookingsAsync(List<Booking> bookings);
     }
 }

@@ -33,6 +33,19 @@ namespace UniTransport.DAL.Repository.Implementation
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Trip>> GetIncomingTripsAsync()
+        {
+            var tenMinutesFromNow = DateTime.Now.AddMinutes(10);
+
+            return await _context.Trips
+                .Include(t => t.Vehicle)
+                .Where(t => t.TripStatus == TripStatus.Active
+                        && !t.IsDeleted
+                        && t.DepartureTime > tenMinutesFromNow)
+                .OrderBy(t => t.DepartureTime)
+                .ToListAsync();
+        }
+
         public async Task<IEnumerable<Trip>> GetTripsByVehicleIdAsync(int vehicleId)
         {
             return await _context.Trips
@@ -69,6 +82,37 @@ namespace UniTransport.DAL.Repository.Implementation
             catch
             {
                 return false;
+            }
+        }
+
+
+
+
+
+        public async Task<List<Trip>> GetAvailableTripsForDateAsync(DateTime date)
+        {
+            return await _context.Trips
+                .Where(t => t.DepartureTime.Date == date.Date
+                        && t.AvailableSeats > 0
+                        && t.TripStatus == TripStatus.Active)
+                .OrderBy(t => t.DepartureTime)
+                .ToListAsync();
+        }
+
+        public async Task<List<Trip>> GetTripsByIdsAsync(List<string> tripIds)
+        {
+            return await _context.Trips
+                .Where(t => tripIds.Contains(t.TripId.ToString()))
+                .ToListAsync();
+        }
+
+        public async Task UpdateTripSeatsAsync(string tripId, int seatsToReduce)
+        {
+            var trip = await _context.Trips.FindAsync(tripId);
+            if (trip != null)
+            {
+                trip.AvailableSeats -= seatsToReduce;
+                await _context.SaveChangesAsync();
             }
         }
     }
