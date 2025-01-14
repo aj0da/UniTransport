@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UniTransport.BLL.ModelVM.BookingVM;
 using UniTransport.BLL.ModelVM.TripVM;
 using UniTransport.BLL.Service.Interface;
 using UniTransport.DAL.Entities;
@@ -25,6 +26,83 @@ namespace UniTransport.BLL.Service.Implementation
             _tripRepository = tripRepository;
             _bookingRepository = bookingRepository;
             _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<Booking>> GetAllBookingsAsync()
+        {
+            return await _bookingRepository.GetAllAsync();
+        }
+
+        public async Task<IEnumerable<Booking>> GetBookingsByTripAsync(int tripId)
+        {
+            var bookings = await _bookingRepository.GetAllAsync();
+            return bookings.Where(b => b.TripId == tripId);
+        }
+
+        public async Task<IEnumerable<Booking>> GetStudentBookingsAsync(int studentId)
+        {
+            var bookings = await _bookingRepository.GetAllAsync();
+            return bookings.Where(b => b.StudentId == studentId);
+        }
+
+        public async Task<bool> CancelBookingAsync(int id)
+        {
+            var booking = await _bookingRepository.GetByIdAsync(id);
+            if (booking == null)
+                return false;
+
+            booking.IsCancelled = true;
+            return await _bookingRepository.UpdateAsync(booking);
+        }
+
+        public async Task<IEnumerable<Booking>> GetBookingsByDateAsync(DateTime date)
+        {
+            var bookings = await _bookingRepository.GetAllAsync();
+            var trips = await _tripRepository.GetAllAsync();
+
+            return bookings.Where(b =>
+                trips.Any(t => t.TripId == b.TripId && t.DepartureTime.Date == date.Date));
+        }
+
+        public async Task<BookingStatisticsVM> GetBookingStatisticsAsync()
+        {
+            var bookings = await _bookingRepository.GetAllAsync();
+            var trips = await _tripRepository.GetAllAsync();
+
+            var stats = new BookingStatisticsVM
+            {
+                TotalBookings = bookings.Count(),
+                ActiveBookings = bookings.Count(b => !b.IsCancelled),
+                CancelledBookings = bookings.Count(b => b.IsCancelled),
+                TotalRevenue = bookings
+                    .Where(b => !b.IsCancelled)
+                    .Join(trips, b => b.TripId, t => t.TripId, (b, t) => (decimal)t.Price)
+                    .Sum(),
+                TotalPassengers = bookings.Count(b => !b.IsCancelled),
+            };
+
+            // Group bookings by route
+            stats.BookingsByRoute = bookings
+                .Where(b => !b.IsCancelled)
+                .Join(trips, b => b.TripId, t => t.TripId, (b, t) => $"{t.DepartureLocation} - {t.ArrivalLocation}")
+                .GroupBy(r => r)
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            // Group bookings by vehicle
+            stats.BookingsByVehicle = bookings
+                .Where(b => !b.IsCancelled)
+                .Join(trips, b => b.TripId, t => t.TripId, (b, t) => t.Vehicle?.LicensePlate ?? "Unknown")
+                .GroupBy(v => v)
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            // Group bookings by date
+            stats.BookingsByDate = bookings
+                .Where(b => !b.IsCancelled)
+                .Join(trips, b => b.TripId, t => t.TripId, (b, t) => t.DepartureTime.Date)
+                .GroupBy(d => d)
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            return stats;
         }
 
         public async Task<List<TripViewModel>> GetAvailableTripsAsync(DateTime date)

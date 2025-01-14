@@ -52,9 +52,12 @@ namespace UniTransport.BLL.Mapping
             .ForMember(dest => dest.Student,
                        opt => opt.Ignore()); // Ignore navigation properties for now
 
-            CreateMap<Trip, TripViewModel>()
-                .ForMember(dest => dest.TripTime,
-                      opt => opt.MapFrom(src => $"{src.DepartureTime:HH:mm} - {src.ArrivalTime:HH:mm}"));
+            //CreateMap<Trip, TripViewModel>()
+            //    .ForMember(dest => dest.TripTime,
+            //          opt => opt.MapFrom(src => $"{src.DepartureTime:HH:mm} - {src.ArrivalTime:HH:mm}"));
+
+            CreateMap<Trip, TripViewModel>();
+            CreateMap<TripViewModel, Trip>();
         }
     }
 }

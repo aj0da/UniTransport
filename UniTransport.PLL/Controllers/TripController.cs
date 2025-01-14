@@ -37,19 +37,33 @@ namespace UniTransport.PLL.Controllers
 		}
 		[HttpPost]
 		[Authorize(Roles ="Student")]
-		public IActionResult Book(IEnumerable<BookTripsVM> trips)
-		{
-			if (trips.IsNullOrEmpty())
-			{
-				return BadRequest("No trips selected for booking.");
-			}
-			//trips has entites and not null
-			if (_tripService.BookTrip(trips, GetLoggedInUserId()))
-			{
-				return RedirectToAction("Profile", "Student");
-			}
-			return RedirectToAction("Home", "Index");
+        public IActionResult Book(IEnumerable<BookTripsVM> trips)
+        {
+            if (trips == null || !trips.Any())
+            {
+                return BadRequest("No trips selected for booking.");
+            }
 
-		}
-	}
+            try
+            {
+                var userId = GetLoggedInUserId();
+                if (_tripService.BookTrip(trips, userId))
+                {
+                    return RedirectToAction("Profile", "Student");
+                }
+
+                ModelState.AddModelError("", "Failed to book trips. Please try again.");
+                return View(trips);
+            }
+            catch (InvalidOperationException)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "An error occurred while booking trips. Please try again.");
+                return View(trips);
+            }
+        }
+    }
 }
