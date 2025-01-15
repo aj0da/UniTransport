@@ -1,5 +1,9 @@
 @model IEnumerable<UniTransport.DAL.Entities.Trip>
 
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@{
+    var token = Antiforgery.GetAndStoreTokens(Context).RequestToken;
+}
 <div class="container-fluid" id="scheduleTableContainer">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Manage Schedules</h2>
@@ -66,6 +70,7 @@
                 <form id="tripForm">
                     @Html.AntiForgeryToken()
                     <input type="hidden" id="tripId" />
+
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="vehicleId" class="form-label">Vehicle</label>
@@ -111,6 +116,5 @@
     </div>
 </div>
 
-@section Scripts {
+
     <script src="~/js/schedule.js"></script>
-}

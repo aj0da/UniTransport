@@ -394,7 +394,7 @@ namespace UniTransport.PLL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddTrip([FromBody] TripViewModel model)
+        public async Task<IActionResult> AddTrip(TripViewModel model)
         {
             try
             {

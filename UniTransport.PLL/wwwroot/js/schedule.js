@@ -68,6 +68,16 @@ function saveTrip() {
         arrivalTime: $('#arrivalTime').val()
     };
 
+    const formattedTripData = {
+        TripId: tripData.tripId,
+        VehicleID: tripData.vehicleId, // Changed key
+        Price: tripData.price,
+        DepartureLocation: tripData.departureLocation,
+        ArrivalLocation: tripData.arrivalLocation,
+        DepartureTime: tripData.departureTime,
+        ArrivalTime: tripData.arrivalTime
+    };
+
     // Validation
     if (!validateTripData(tripData)) {
         return;
@@ -78,7 +88,10 @@ function saveTrip() {
     $.ajax({
         url: url,
         type: 'POST',
-        data: tripData,
+        data: formattedTripData,
+        headers: {
+            'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+        },
         success: function(response) {
             if (response.success) {
                 $('#tripModal').modal('hide');
